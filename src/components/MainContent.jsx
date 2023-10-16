@@ -53,7 +53,7 @@ export default function MainContent() {
           ))}
         </div>
       </div>
-      <div className="flex items-center justify-center p-10 text-left border border-black w-1/2">
+      <div className="flex items-center justify-center p-10 text-left w-1/2">
         <div>
           <h1 className="text-orange-400 text-base font-bold">
             SNEAKER COMPANY
@@ -71,8 +71,8 @@ export default function MainContent() {
             </span>
           </p>
           <p className="text-[] font-bold">$250</p>
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex w-full md:w-2/6 border">
+          <div className="flex flex-col w-full border-2 border-black md:flex-row gap-4">
+            <div className="flex w-full basis-2/5 md:w-2/6 border">
               <button
                 className="inline-flex justify-center items-center rounded-l py-2 px-4 border-y border-l w-1/4"
                 onClick={() => console.log("minus")}
@@ -92,7 +92,7 @@ export default function MainContent() {
                 <img src={plus} alt="" />
               </button>
             </div>
-            <div className="w-full md:w-4/6">
+            <div className="w-full basis-3/5 md:w-4/6">
               <Button text="Add to cart" img={cart} />
             </div>
           </div>
