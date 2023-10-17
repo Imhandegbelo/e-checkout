@@ -1,8 +1,13 @@
 import React from "react";
 
-export default function Button({ text, img = null }) {
+export default function Button({ text, img = null, title, shadow }) {
   return (
-    <button className="inline-flex items-center w-full gap-4 px-10 justify-center bg-orange-400 font-bold text-white py-3 rounded-lg">
+    <button
+      title={title}
+      className={`inline-flex items-center w-full gap-4 md:px-4 px-10 hover:bg-orange-300 ${
+        shadow ? "shadow-xl shadow-orange-200" : ""
+      } justify-center bg-orange-400 font-bold text-white py-3 rounded-lg`}
+    >
       {img ? (
         <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
           <path

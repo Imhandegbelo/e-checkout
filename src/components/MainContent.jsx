@@ -1,99 +1,76 @@
 import React, { useState } from "react";
-import product1 from "../assets/images/image-product-1.jpg";
-import product1_thumb from "../assets/images/image-product-1-thumbnail.jpg";
-import product2 from "../assets/images/image-product-2.jpg";
-import product2_thumb from "../assets/images/image-product-2-thumbnail.jpg";
-import product3 from "../assets/images/image-product-3.jpg";
-import product3_thumb from "../assets/images/image-product-3-thumbnail.jpg";
-import product4 from "../assets/images/image-product-4.jpg";
-import product4_thumb from "../assets/images/image-product-4-thumbnail.jpg";
 import plus from "../assets/images/icon-plus.svg";
 import minus from "../assets/images/icon-minus.svg";
-
-import cart from "../assets/images/icon-cart.svg";
+import cart_icon from "../assets/images/icon-cart.svg";
 import Button from "./Button";
+import DisplaySection from "./DisplaySection";
 
-export default function MainContent() {
+export default function MainContent({ cart }) {
   const [quantity, setQuantity] = useState(0);
-  const [isActive, setIsActive] = useState(0);
-  const image_thumbs = [
-    product1_thumb,
-    product2_thumb,
-    product3_thumb,
-    product4_thumb,
-  ];
-  const images = [product1, product2, product3, product4];
 
   return (
-    <div className="flex gap-10 justify-between font-sans">
-      <div className="w-1/2 px-10">
-        <div className="my-6 rounded-2xl">
-          <img
-            src={images[isActive]}
-            alt="product sneaker"
-            className="rounded-xl"
-          />
-        </div>
-        <div className="flex justify-between gap-6 rounded-lg">
-          {image_thumbs.map((image, index) => (
-            <div
-              className="bg-white hover:opacity-70"
-              onClick={() => setIsActive(index)}
-            >
-              <img
-                src={image}
-                alt={`image-${index + 1}`}
-                className={`rounded-2xl border-4 ${
-                  isActive == index
-                    ? "border-orange-500 opacity-70"
-                    : "border-transparent"
-                } border-orange-k500`}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="flex items-center justify-center p-10 text-left w-1/2">
-        <div>
-          <h1 className="text-orange-400 text-base font-bold">
+    <div className="flex flex-col md:flex-row md:justify-between md:gap-6 lg:gap-8 font-sans md:h-[80vh]">
+      <DisplaySection />
+      <div className="flex lg:items-centher md:justify-center p-6 md:p-0 lg:px-10 lg:pt-10 text-left w-full md:w-1/2">
+        <div className="">
+          <h1 className="text-orange-400 md:text-base font-bold md:py-4">
             SNEAKER COMPANY
           </h1>
-          <h2 className="font-bold text-4xl">Fall Limited Edition Sneakers</h2>
-          <p>
+          <h2 className="font-bold text-3xl md:text-5xl py-2 md:py-0 lg:my-4">
+            Fall Limited Edition Sneakers
+          </h2>
+          <p className="md:pt-2 md:mb-3 leading-6 text-gray-400">
             These low-profile sneakers are your perfect casual wear companion.
             Featuring a durable rubber outer sole, they'll withstand everything
             the weather can offer.
           </p>
-          <p className="inline-flex align-center text-3xl font-bold">
-            $125.00{" "}
-            <span className="bg-orange-100 text-orange-400 text-lg p-1 ml-2 rounded">
-              50%
-            </span>
-          </p>
-          <p className="text-[] font-bold">$250</p>
-          <div className="flex flex-col w-full border-2 border-black md:flex-row gap-4">
-            <div className="flex w-full basis-2/5 md:w-2/6 border">
-              <button
-                className="inline-flex justify-center items-center rounded-l py-2 px-4 border-y border-l w-1/4"
-                onClick={() => console.log("minus")}
+          <div className="flex md:flex-col justify-between items-center py-2 md:py-0 md:items-start lg:itesms-center">
+            <p className="inline-flex align-center text-3xl font-bold py-2">
+              $125.00{" "}
+              <span
+                title="discount"
+                className="bg-orange-100 text-orange-400 text-lg p-1 ml-4 rounded"
               >
-                <img src={minus} alt="" />
+                50%
+              </span>
+            </p>
+            <p className="text-lg text-gray-400 line-through font-bold">
+              $250.00
+            </p>
+          </div>
+          <div className="flex flex-col w-full md:flex-row gap-4 md:mt-4 lg:mt-8">
+            <div className="flex w-full md:basis-2/5 lg:w-2/6">
+              <button
+                disabled={quantity <= 0}
+                className={`inline-flex justify-center items-center rounded-l-lg py-2 px-4 md:px-0 lg:px-2 md:w-1/3 lg:w-1/4 bg-gray-200 `}
+                onClick={() =>
+                  quantity == 0 ? null : setQuantity(quantity - 1)
+                }
+              >
+                <img src={minus} alt="remove" className="hover:opacity-50" />
               </button>
               <input
                 type="text"
+                title={quantity <= 1 ? `${quantity} unit` : `${quantity} units`}
                 disabled
                 value={quantity}
-                className="text-center w-full bg-cyan-100 border-y"
+                className="text-center w-full text-xl md:text-base py-2 border-y bg-gray-200 font-bold"
               />
               <button
-                className="inline-flex justify-center items-center rounded-r py-2 px-4 border-y border-r"
-                onClick={() => console.log("plus")}
+                className="inline-flex justify-center items-center rounded-r-lg py-2 px-4 md:px-0 lg:px-2 md:w-1/3 lg:w-1/4 bg-gray-200"
+                onClick={() => setQuantity(quantity + 1)}
               >
-                <img src={plus} alt="" />
+                <img src={plus} alt="add" className="hover:opacity-50" />
               </button>
             </div>
-            <div className="w-full basis-3/5 md:w-4/6">
-              <Button text="Add to cart" img={cart} />
+            <div className="w-full md:basis-3/5 lg:w-4/6">
+              <Button
+                title="Add to cart"
+                text="Add to cart"
+                img={cart_icon}
+                shadow
+                onClick={() => setCart(quantity)}
+              />
             </div>
           </div>
         </div>
