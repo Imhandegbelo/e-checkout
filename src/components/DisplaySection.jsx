@@ -2,7 +2,7 @@ import React, { useState, memo } from "react";
 import right_arrow from "../assets/images/icon-next.svg";
 import left_arrow from "../assets/images/icon-previous.svg";
 
-const DisplaySection = ({ thumbs, images, onImageClick }) => {
+const DisplaySection = ({ images, onImageClick }) => {
   const [isActive, setIsActive] = useState(0);
   
 
@@ -14,6 +14,7 @@ const DisplaySection = ({ thumbs, images, onImageClick }) => {
       >
         <img
           src={images[isActive]}
+          srcSet=""
           alt="product sneaker"
           className="md:rounded-xl h-[96%] lg:cursor-pointer"
         />
@@ -37,7 +38,7 @@ const DisplaySection = ({ thumbs, images, onImageClick }) => {
         onClick={() => setIsActive((isActive + 1) % images.length)}
       />
       <div className="hidden md:flex justify-between md:gap-2 lg:gap-2 lg:w-[96%] rounded-lg -mt-2">
-        {thumbs.map((image, index) => (
+        {images.map((image, index) => (
           <div
             className="bg-white"
             onClick={() => setIsActive(index)}

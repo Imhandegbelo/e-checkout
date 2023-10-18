@@ -11,13 +11,10 @@ export default function MainContent({
   quantity,
   increment,
   decrement,
-  image_thumbs,
   images,
 }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  // function handleLightBox() {
-  //   // setLightbox(true)
-  // }
+  
   function handleImageClick() {
     setLightboxOpen(!lightboxOpen);
   }
@@ -25,7 +22,6 @@ export default function MainContent({
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:gap-6 lg:gap-8 font-sans md:h-[80vh]">
       <DisplaySection
-        thumbs={image_thumbs}
         images={images}
         onImageClick={handleImageClick}
       />
@@ -92,7 +88,6 @@ export default function MainContent({
         </div>
       </div>
       <LightBox
-        thumbs={image_thumbs}
         images={images}
         lightboxVisible={lightboxOpen}
         close={handleImageClick}

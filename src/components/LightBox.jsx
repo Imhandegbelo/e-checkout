@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import right_arrow from "../assets/images/icon-next.svg";
 import left_arrow from "../assets/images/icon-previous.svg";
-import close from "../assets/images/icon-close.svg";
 
-export default function LightBox({ images, thumbs, lightboxVisible, close }) {
+function LightBox({ images, lightboxVisible, close }) {
   const [isActive, setIsActive] = useState(0);
 
   return (
@@ -50,13 +49,13 @@ export default function LightBox({ images, thumbs, lightboxVisible, close }) {
             onClick={() => setIsActive((isActive + 1) % images.length)}
           />
           <div className="flex justify-between gap-2 w-10/12 mx-auto rounded-lg">
-            {thumbs.map((image, index) => (
+            {images.map((image, index) => (
               <div
                 className="bg-white rounded-lg"
                 onClick={() => setIsActive(index)}
                 title={`view-${index + 1}`}
+                key={`view-${index}`}
               >
-                {/* <div className="bg-white rounded-2xl border-2 hover:border-orange-500 "> */}
                 <img
                   src={image}
                   alt={`image-${index + 1}`}
@@ -67,7 +66,6 @@ export default function LightBox({ images, thumbs, lightboxVisible, close }) {
                       : ""
                   } hover:opacity-50 h-full`}
                 />
-                {/* </div> */}
               </div>
             ))}
           </div>
@@ -76,3 +74,4 @@ export default function LightBox({ images, thumbs, lightboxVisible, close }) {
     )
   );
 }
+export default memo(LightBox);
