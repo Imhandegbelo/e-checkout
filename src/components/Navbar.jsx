@@ -7,7 +7,7 @@ import image_thumb from "../assets/images/image-product-1-thumbnail.jpg";
 import { memo, useState } from "react";
 import Button from "./Button";
 
-const Navbar = ({ total, menuClicked, links }) => {
+const Navbar = ({ total, menuClicked, links, empty_cart }) => {
   const [cartOpen, setCartOpen] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
 
@@ -81,7 +81,7 @@ const Navbar = ({ total, menuClicked, links }) => {
                     src={delete_icon}
                     alt="delete icon"
                     className="sm:w-8 md:w-4 cursor-pointer"
-                    onClick={() => setIsEmpty(true)}
+                    onClick={empty_cart}
                   />
                 </div>
                 <Button
