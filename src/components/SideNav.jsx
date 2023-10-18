@@ -11,6 +11,7 @@ export default function SideNav({links, onclose}) {
         {links.map((link) => (
           <a
             href="#"
+            key={link}
             className="border-b-4 border-transparent hover:border-b-orange-500"
           >
             {link}

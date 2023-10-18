@@ -10,7 +10,7 @@ import product3_thumb from "./assets/images/image-product-3-thumbnail.jpg";
 import product4 from "./assets/images/image-product-4.jpg";
 import product4_thumb from "./assets/images/image-product-4-thumbnail.jpg";
 import SideNav from "./components/SideNav";
-import DisplaySection from "./components/DisplaySection";
+// import LightBox from "./components/LightBox";
 
 function App() {
   const [cart, setCart] = useState(0);
@@ -38,14 +38,19 @@ function App() {
   function handleMenuClick() {
     setIsNavOpen(!isNavOpen);
   }
-  function emptyCart(){
-    setCart(0)
+  function emptyCart() {
+    setCart(0);
   }
 
   return (
     <div className="flex justify-center relative">
       <div className="max-w-[1440px] md:px-8 lg:px-24 h-screen">
-        <Navbar total={cart} menuClicked={handleMenuClick} links={links} empty_cart={emptyCart} />
+        <Navbar
+          total={cart}
+          menuClicked={handleMenuClick}
+          links={links}
+          empty_cart={emptyCart}
+        />
         <MainContent
           quantity={quantity}
           onclick={handleSubmit}

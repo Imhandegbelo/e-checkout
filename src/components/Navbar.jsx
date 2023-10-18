@@ -49,7 +49,7 @@ const Navbar = ({ total, menuClicked, links, empty_cart }) => {
         />
       </div>
       {cartOpen && (
-        <div className="w-[90%] sm:w-[92%] md:shadow-2xl md:w-[22rem] flex flex-col justify-between h-60 bg-white absolute top-20 sm:top-24v right-6 md:-right-12 z-10 rounded-lg">
+        <div className="w-[90%] sm:w-[92%] md:shadow-2xl md:w-[22rem] flex flex-col justify-between h-60 bg-white absolute top-20 sm:top-24 md:-right-12 z-10 rounded-lg">
           <div className="p-3 md:px-6 border-b">
             <h1 className="font-bold text-lg">Cart</h1>
           </div>

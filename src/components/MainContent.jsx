@@ -4,9 +4,9 @@ import minus from "../assets/images/icon-minus.svg";
 import cart_icon from "../assets/images/icon-cart.svg";
 import Button from "./Button";
 import DisplaySection from "./DisplaySection";
+import LightBox from "./LightBox";
 
 export default function MainContent({
-  // cart,
   onclick,
   quantity,
   increment,
@@ -14,10 +14,21 @@ export default function MainContent({
   image_thumbs,
   images,
 }) {
-  
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  // function handleLightBox() {
+  //   // setLightbox(true)
+  // }
+  function handleImageClick() {
+    setLightboxOpen(!lightboxOpen);
+  }
+
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:gap-6 lg:gap-8 font-sans md:h-[80vh]">
-      <DisplaySection thumbs={image_thumbs} images={images} />
+      <DisplaySection
+        thumbs={image_thumbs}
+        images={images}
+        onImageClick={handleImageClick}
+      />
       <div className="flex lg:items-centher md:justify-center p-6 md:p-0 lg:px-10 lg:pt-10 text-left w-full md:w-1/2">
         <div className="">
           <h1 className="text-orange-400 md:text-base font-bold md:py-4">
@@ -63,7 +74,6 @@ export default function MainContent({
               />
               <button
                 className="inline-flex justify-center items-center rounded-r-lg py-2 px-4 md:px-0 lg:px-2 md:w-1/3 bg-gray-200 hover:bg-gray-300"
-                // onClick={() => setQuantity(quantity + 1)}
                 onClick={increment}
               >
                 <img src={plus} alt="add" className="hover:opacity-50" />
@@ -81,6 +91,12 @@ export default function MainContent({
           </div>
         </div>
       </div>
+      <LightBox
+        thumbs={image_thumbs}
+        images={images}
+        lightboxVisible={lightboxOpen}
+        close={handleImageClick}
+      />
     </div>
   );
 }

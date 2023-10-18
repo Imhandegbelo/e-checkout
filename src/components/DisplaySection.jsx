@@ -1,30 +1,16 @@
 import React, { useState, memo } from "react";
-import product1 from "../assets/images/image-product-1.jpg";
-import product1_thumb from "../assets/images/image-product-1-thumbnail.jpg";
-import product2 from "../assets/images/image-product-2.jpg";
-import product2_thumb from "../assets/images/image-product-2-thumbnail.jpg";
-import product3 from "../assets/images/image-product-3.jpg";
-import product3_thumb from "../assets/images/image-product-3-thumbnail.jpg";
-import product4 from "../assets/images/image-product-4.jpg";
-import product4_thumb from "../assets/images/image-product-4-thumbnail.jpg";
 import right_arrow from "../assets/images/icon-next.svg";
 import left_arrow from "../assets/images/icon-previous.svg";
 
-const DisplaySection = ({ thumbs, images }) => {
+const DisplaySection = ({ thumbs, images, onImageClick }) => {
   const [isActive, setIsActive] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
-  // const image_thumbs = [
-  //   product1_thumb,
-  //   product2_thumb,
-  //   product3_thumb,
-  //   product4_thumb,
-  // ];
-  // const images = [product1, product2, product3, product4];
+  
+
   return (
     <div className="flex flex-col w-full lg:h-[90%] md:w-1/2 lg:px-10 relative">
       <div
         className="rounded-2xl h-[97%]"
-        onClick={() => console.log("Lightbox activated")}
+        onClick={onImageClick}
       >
         <img
           src={images[isActive]}
