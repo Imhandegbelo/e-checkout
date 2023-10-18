@@ -5,12 +5,19 @@ import cart_icon from "../assets/images/icon-cart.svg";
 import Button from "./Button";
 import DisplaySection from "./DisplaySection";
 
-export default function MainContent({ cart }) {
-  const [quantity, setQuantity] = useState(0);
-
+export default function MainContent({
+  // cart,
+  onclick,
+  quantity,
+  increment,
+  decrement,
+  image_thumbs,
+  images,
+}) {
+  
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:gap-6 lg:gap-8 font-sans md:h-[80vh]">
-      <DisplaySection />
+      <DisplaySection thumbs={image_thumbs} images={images} />
       <div className="flex lg:items-centher md:justify-center p-6 md:p-0 lg:px-10 lg:pt-10 text-left w-full md:w-1/2">
         <div className="">
           <h1 className="text-orange-400 md:text-base font-bold md:py-4">
@@ -42,10 +49,8 @@ export default function MainContent({ cart }) {
             <div className="flex w-full md:basis-2/5 lg:w-2/6">
               <button
                 disabled={quantity <= 0}
-                className={`inline-flex justify-center items-center rounded-l-lg py-2 px-4 md:px-0 lg:px-2 md:w-1/3 lg:w-1/4 bg-gray-200 `}
-                onClick={() =>
-                  quantity == 0 ? null : setQuantity(quantity - 1)
-                }
+                className="inline-flex justify-center items-center rounded-l-lg py-2 px-4 md:px-0 lg:px-2 md:w-1/3 bg-gray-200 hover:bg-gray-300"
+                onClick={decrement}
               >
                 <img src={minus} alt="remove" className="hover:opacity-50" />
               </button>
@@ -57,8 +62,9 @@ export default function MainContent({ cart }) {
                 className="text-center w-full text-xl md:text-base py-2 border-y bg-gray-200 font-bold"
               />
               <button
-                className="inline-flex justify-center items-center rounded-r-lg py-2 px-4 md:px-0 lg:px-2 md:w-1/3 lg:w-1/4 bg-gray-200"
-                onClick={() => setQuantity(quantity + 1)}
+                className="inline-flex justify-center items-center rounded-r-lg py-2 px-4 md:px-0 lg:px-2 md:w-1/3 bg-gray-200 hover:bg-gray-300"
+                // onClick={() => setQuantity(quantity + 1)}
+                onClick={increment}
               >
                 <img src={plus} alt="add" className="hover:opacity-50" />
               </button>
@@ -69,7 +75,7 @@ export default function MainContent({ cart }) {
                 text="Add to cart"
                 img={cart_icon}
                 shadow
-                onClick={() => setCart(quantity)}
+                onclick={onclick}
               />
             </div>
           </div>
