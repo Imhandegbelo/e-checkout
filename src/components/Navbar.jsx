@@ -9,7 +9,6 @@ import Button from "./Button";
 
 const Navbar = ({ total, menuClicked, links, empty_cart }) => {
   const [cartOpen, setCartOpen] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(true);
 
   return (
     <nav className="flex items-center justify-between px-6 py-4 md:py-0 sm:px-10 md:px-0 mb-0 md:mb-6 border-b-2 w-full bg-white relative">
@@ -50,12 +49,12 @@ const Navbar = ({ total, menuClicked, links, empty_cart }) => {
         />
       </div>
       {cartOpen && (
-        <div className="w-[90%] sm:w-[92%] md:shadow-2xl md:w-[22rem] flex flex-col justify-between h-60 bg-white absolute top-20 sm:top-24 right-6 z-10 rounded-lg">
+        <div className="w-[90%] sm:w-[92%] md:shadow-2xl md:w-[22rem] flex flex-col justify-between h-60 bg-white absolute top-20 sm:top-24v right-6 md:-right-12 z-10 rounded-lg">
           <div className="p-3 md:px-6 border-b">
             <h1 className="font-bold text-lg">Cart</h1>
           </div>
           <div className="p-3 flex justify-center items-center rounded-b-lg h-full">
-            {total == 0 || !isEmpty ? (
+            {total == 0? (
               <h1 className="font-bold text-gray-500">Your cart is empty</h1>
             ) : (
               <div className="flex flex-col gap-7 w-full md:px-4">
@@ -66,7 +65,7 @@ const Navbar = ({ total, menuClicked, links, empty_cart }) => {
                       alt="image thumb"
                       className="w-12 sm:w-16 md:w-12 rounded"
                     />
-                    <div className="text-gray-500">
+                    <div className="text-gray-500 text-sm">
                       <p>Fall Limited Edition Sneakers</p>
                       <p>
                         $125.00 x {total}
