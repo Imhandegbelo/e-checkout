@@ -17,6 +17,7 @@ function App() {
 
   function handleSubmit() {
     setCart(quantity);
+    setQuantity(0);
   }
   function handleIncrement() {
     setQuantity(quantity + 1);
