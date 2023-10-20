@@ -75,7 +75,7 @@ export default function MainContent({
             <div className="w-full md:basis-3/5 lg:w-4/6">
               <Button
                 disabled={quantity < 1}
-                title="Add to cart"
+                title={quantity == 0 ? "Add quantity first" : "Add to cart"}
                 text="Add to cart"
                 img={cart_icon}
                 shadow
