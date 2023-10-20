@@ -14,17 +14,14 @@ export default function MainContent({
   images,
 }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  
+
   function handleImageClick() {
     setLightboxOpen(!lightboxOpen);
   }
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:gap-6 lg:gap-8 font-sans md:h-[80vh]">
-      <DisplaySection
-        images={images}
-        onImageClick={handleImageClick}
-      />
+      <DisplaySection images={images} onImageClick={handleImageClick} />
       <div className="flex lg:items-centher md:justify-center p-6 md:p-0 lg:px-10 lg:pt-10 text-left w-full md:w-1/2">
         <div className="">
           <h1 className="text-orange-400 md:text-base font-bold md:py-4">
@@ -77,6 +74,7 @@ export default function MainContent({
             </div>
             <div className="w-full md:basis-3/5 lg:w-4/6">
               <Button
+                disabled={quantity < 1}
                 title="Add to cart"
                 text="Add to cart"
                 img={cart_icon}

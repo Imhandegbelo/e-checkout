@@ -40,7 +40,7 @@ const Navbar = ({ total, menuClicked, links, empty_cart }) => {
           onClick={() => setCartOpen(!cartOpen)}
         />
         <span className="bg-orange-500 text-white font-bold absolute top-1 md:top-2 text-[0.55rem] px-1 left-4 rounded-full">
-          {total}
+          {total == 0 ? "" : total}
         </span>
         <img
           src={avatar}
@@ -54,7 +54,7 @@ const Navbar = ({ total, menuClicked, links, empty_cart }) => {
             <h1 className="font-bold text-lg">Cart</h1>
           </div>
           <div className="p-3 flex justify-center items-center rounded-b-lg h-full">
-            {total == 0? (
+            {total == 0 ? (
               <h1 className="font-bold text-gray-500">Your cart is empty</h1>
             ) : (
               <div className="flex flex-col gap-7 w-full md:px-4">

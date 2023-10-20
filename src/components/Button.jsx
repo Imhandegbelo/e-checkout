@@ -1,12 +1,14 @@
 import React from "react";
 
-export default function Button({ text, img = null, title, shadow, onclick }) {
+export default function Button({ text, img = null, title, shadow, disabled,  onclick }) {
   return (
     <button
       title={title}
       onClick={onclick}
-      className={`inline-flex items-center w-full gap-4 md:px-4 px-10 hover:bg-orange-300 ${
-        shadow ? "shadow-xl shadow-orange-200" : ""
+      disabled={disabled}
+      type="button"
+      className={`inline-flex items-center w-full gap-4 md:px-4 px-10 disabled:cursor-not-allowed disabled:bg-orange-300 hover:bg-orange-300 ${
+        shadow ? "shadow-xl shadow-orange-200 disabled:shadow-none" : ""
       } justify-center bg-orange-400 font-bold text-white py-3 rounded-lg`}
     >
       {img ? (
