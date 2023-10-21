@@ -16,15 +16,15 @@ export default function MainContent({
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   function handleImageClick() {
-    setLightboxOpen(!lightboxOpen);
+    setLightboxOpen(true);
   }
 
   return (
-    <div className="flex flex-col md:flex-row md:justify-between md:gap-6 lg:gap-8 font-sans md:h-[80vh]">
+    <main className="flex flex-col md:flex-row md:justify-between md:px-10 xl:px-16 md:gap-4 font-sans md:h-[35rem]">
       <DisplaySection images={images} onImageClick={handleImageClick} />
-      <div className="flex lg:items-centher md:justify-center p-6 md:p-0 lg:px-10 lg:pt-10 text-left w-full md:w-1/2">
+      <div className="flex lg:items-center md:justify-center p-6 md:p-0 text-left w-full md:w-1/2 md:h-[35rem]">
         <div className="">
-          <h1 className="text-orange-400 md:text-base font-bold md:py-4">
+          <h1 className="text-orange-400 md:text-base font-bold md:pb-4">
             SNEAKER COMPANY
           </h1>
           <h2 className="font-bold text-3xl md:text-5xl py-2 md:py-0 lg:my-4">
@@ -88,8 +88,8 @@ export default function MainContent({
       <LightBox
         images={images}
         lightboxVisible={lightboxOpen}
-        close={handleImageClick}
+        close={()=>setLightboxOpen(false)}
       />
-    </div>
+    </main>
   );
 }

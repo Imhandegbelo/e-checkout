@@ -7,16 +7,15 @@ const DisplaySection = ({ images, onImageClick }) => {
   
 
   return (
-    <div className="flex flex-col w-full lg:h-[90%] md:w-1/2 lg:px-10 relative">
+    <div className="flex flex-col w-full md:h-[35rem] md:w-[2y7rem] gap-2 md:w-1/2  relative">
       <div
-        className="rounded-2xl h-[97%]"
+        className="rounded-2xl"
         onClick={onImageClick}
       >
         <img
           src={images[isActive]}
-          srcSet=""
           alt="product sneaker"
-          className="md:rounded-xl h-[96%] lg:cursor-pointer"
+          className="md:rounded-xl h-[90%] lg:cursor-pointer md:h-[27rem]"
         />
       </div>
       <img
@@ -37,10 +36,10 @@ const DisplaySection = ({ images, onImageClick }) => {
         className="py-3 px-4 rounded-full bg-white absolute right-4 top-[40%] md:hidden cursor-pointer"
         onClick={() => setIsActive((isActive + 1) % images.length)}
       />
-      <div className="hidden md:flex justify-between md:gap-2 lg:gap-2 lg:w-[96%] rounded-lg -mt-2">
+      <div className="hidden md:flex justify-between md:gap-2 md:max-w-[27rem] rounded-lg">
         {images.map((image, index) => (
           <div
-            className="bg-white"
+            className="bg-white "
             onClick={() => setIsActive(index)}
             title={`view-${index + 1}`}
           >

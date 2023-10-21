@@ -26,7 +26,7 @@ function App() {
     quantity == 0 ? null : setQuantity(quantity - 1);
   }
   function handleMenuClick() {
-    setIsNavOpen(!isNavOpen);
+    setIsNavOpen(true);
   }
   function emptyCart() {
     setCart(0);
@@ -49,7 +49,7 @@ function App() {
           images={images}
         />
       </div>
-      {isNavOpen && <SideNav links={links} onclose={handleMenuClick} />}
+      {isNavOpen && <SideNav links={links} onclose={()=>setIsNavOpen(false)} />}
     </div>
   );
 }

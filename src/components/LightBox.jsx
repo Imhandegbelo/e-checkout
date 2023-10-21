@@ -7,8 +7,11 @@ function LightBox({ images, lightboxVisible, close }) {
 
   return (
     lightboxVisible && (
-      <div className="hidden md:flex items-center justify-center absolute h-screen w-screen left-0 top-0 bg-black/70">
-        <div className="flex flex-col gap-3 relative w-1/3 z-10 bg-blackk">
+      <div
+        onClick={close}
+        className="hidden md:flex items-center justify-center absolute h-screen w-screen left-0 top-0 bg-black/70"
+      >
+        <div className="flex flex-col gap-3 relative w-1/3 z-10">
           <button onClick={close} className="self-end">
             <svg
               width="14"
@@ -22,11 +25,11 @@ function LightBox({ images, lightboxVisible, close }) {
               />
             </svg>
           </button>
-          <div className="rounded-2xl">
+          <div onClick={(e) => e.stopPropagation()} className="rounded-2xl">
             <img
               src={images[isActive]}
               alt="product sneaker"
-              className="md:rounded-xl h-[96%]"
+              className="md:rounded-xl h-[35rem] w-[35rem]"
             />
           </div>
           <img
@@ -34,11 +37,12 @@ function LightBox({ images, lightboxVisible, close }) {
             alt="previous"
             title="previous"
             className="hover:fill-orange-500 py-3 px-4 rounded-full bg-white absolute -left-5 top-[40%] cursor-pointer"
-            onClick={() =>
+            onClick={(e) => {
+              e.stopPropagation();
               isActive == 0
                 ? setIsActive(images.length - 1)
-                : setIsActive((isActive - 1) % images.length)
-            }
+                : setIsActive((isActive - 1) % images.length);
+            }}
           />
 
           <img
@@ -46,13 +50,19 @@ function LightBox({ images, lightboxVisible, close }) {
             alt="next"
             title="next"
             className="py-3 px-4 rounded-full bg-white absolute -right-5 top-[40%] cursor-pointer"
-            onClick={() => setIsActive((isActive + 1) % images.length)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsActive((isActive + 1) % images.length);
+            }}
           />
           <div className="flex justify-between gap-2 w-10/12 mx-auto rounded-lg">
             {images.map((image, index) => (
               <div
                 className="bg-white rounded-lg"
-                onClick={() => setIsActive(index)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsActive(index);
+                }}
                 title={`view-${index + 1}`}
                 key={`view-${index}`}
               >
