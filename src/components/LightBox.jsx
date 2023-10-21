@@ -11,7 +11,7 @@ function LightBox({ images, lightboxVisible, close }) {
         onClick={close}
         className="hidden md:flex items-center justify-center absolute h-screen w-screen left-0 top-0 bg-black/70"
       >
-        <div className="flex flex-col gap-3 relative w-1/3 z-10">
+        <div className="flex flex-col gap-3 relative lg:w-[30rem] z-10">
           <button onClick={close} className="self-end">
             <svg
               width="14"
@@ -29,7 +29,7 @@ function LightBox({ images, lightboxVisible, close }) {
             <img
               src={images[isActive]}
               alt="product sneaker"
-              className="md:rounded-xl h-[35rem] w-[35rem]"
+              className="md:rounded-xl h-[30rem] w-[30rem]"
             />
           </div>
           <img
@@ -55,7 +55,7 @@ function LightBox({ images, lightboxVisible, close }) {
               setIsActive((isActive + 1) % images.length);
             }}
           />
-          <div className="flex justify-between gap-2 w-10/12 mx-auto rounded-lg">
+          <div className="flex justify-between gap-2 w-[25rem] mx-auto rounded-lg">
             {images.map((image, index) => (
               <div
                 className="bg-white rounded-lg"
