@@ -88,7 +88,7 @@ export default function MainContent({
       <LightBox
         images={images}
         lightboxVisible={lightboxOpen}
-        close={()=>setLightboxOpen(false)}
+        close={() => setLightboxOpen(false)}
       />
     </main>
   );

@@ -1,10 +1,10 @@
 import React from "react";
 import close from "../assets/images/icon-close.svg";
 
-export default function SideNav({links, onclose}) {
+export default function SideNav({ links, onclose }) {
   return (
     <>
-      <div  className="h-screen flex flex-col gap-6 font-bold bg-white w-2/3 fixed left-0 p-6 sm:p-10 z-10">
+      <div className="h-screen flex flex-col gap-6 font-bold bg-white w-2/3 fixed left-0 p-6 sm:p-10 z-10">
         <button onClick={onclose} className="mb-10">
           <img src={close} alt="close" className="" />
         </button>
@@ -18,7 +18,10 @@ export default function SideNav({links, onclose}) {
           </a>
         ))}
       </div>
-      <div onClick={onclose} className="h-screen w-screen bg-black/70 absolute left-0"></div>
+      <div
+        onClick={onclose}
+        className="h-screen w-screen bg-black/70 absolute left-0"
+      ></div>
     </>
   );
 }

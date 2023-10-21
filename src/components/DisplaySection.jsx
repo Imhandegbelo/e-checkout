@@ -4,14 +4,10 @@ import left_arrow from "../assets/images/icon-previous.svg";
 
 const DisplaySection = ({ images, onImageClick }) => {
   const [isActive, setIsActive] = useState(0);
-  
 
   return (
     <div className="flex flex-col w-full md:h-[35rem] md:w-[2y7rem] gap-2 md:w-1/2  relative">
-      <div
-        className="rounded-2xl"
-        onClick={onImageClick}
-      >
+      <div className="rounded-2xl" onClick={onImageClick}>
         <img
           src={images[isActive]}
           alt="product sneaker"

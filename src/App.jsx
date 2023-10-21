@@ -7,7 +7,6 @@ import product3 from "./assets/images/image-product-3.jpg";
 import product4 from "./assets/images/image-product-4.jpg";
 import SideNav from "./components/SideNav";
 
-
 function App() {
   const [cart, setCart] = useState(0);
   const [quantity, setQuantity] = useState(0);
@@ -49,7 +48,9 @@ function App() {
           images={images}
         />
       </div>
-      {isNavOpen && <SideNav links={links} onclose={()=>setIsNavOpen(false)} />}
+      {isNavOpen && (
+        <SideNav links={links} onclose={() => setIsNavOpen(false)} />
+      )}
     </div>
   );
 }
